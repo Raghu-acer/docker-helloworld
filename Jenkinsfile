@@ -33,7 +33,7 @@ pipeline {
        }
        stage('docker run') {
            steps {
-               ansiblePlaybook credentialsId: 'ansible-playbook', disableHostKeyChecking: true, installation: 'ansible', inventory: 'host', playbook: 'Ansible.yml'
+               ansiblePlaybook credentialsId: 'ansible-playbook', disableHostKeyChecking: true, installation: 'ansible', inventory: 'host', playbook: 'docker-hello.yaml'
            }
        }
     }
