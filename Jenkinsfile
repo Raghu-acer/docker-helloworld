@@ -3,7 +3,7 @@ pipeline {
     stages {
        stage('scm') {
            steps {
-               git 'https://github.com/Raghu-acer/hello-world.git'
+               git 'https://github.com/Raghu-acer/docker-helloworld.git'
            }
        }
        stage('buld') {
@@ -31,9 +31,9 @@ pipeline {
                sh 'sudo docker push raghudusa/helloworld:19052021'
            }
        }
-       stage('docker run') {
+       stage('deploy ansible') {
            steps {
-               ansiblePlaybook credentialsId: 'ansible-playbook', disableHostKeyChecking: true, installation: 'ansible', inventory: 'host', playbook: 'docker-hello.yaml'
+               ansiblePlaybook credentialsId: 'playbook', disableHostKeyChecking: true, installation: 'ansible', inventory: 'host', playbook: 'docker-hello.yaml'
            }
        }
     }
